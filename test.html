@@ -4,6 +4,7 @@
  <title>GA Test</title>
  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.js"></script>
    <script>
+  
    jQuery(function($) {
     // Debug flag
     var debugMode = false;
@@ -30,7 +31,7 @@
 
     // Track the aticle load
     if (!debugMode) {
-        _gaq.push(['_trackEvent', 'Reading', 'ArticleLoaded', '', , true]);
+       ga('send', 'event', 'Reading', 'ArticleLoaded','111111'); 
     } else {
         alert('The page has loaded. Woohoo.');    
     }
@@ -46,7 +47,7 @@
             scrollStart = currentTime.getTime();
             timeToScroll = Math.round((scrollStart - beginning) / 1000);
             if (!debugMode) {
-                _gaq.push(['_trackEvent', 'Reading', 'StartReading', '', timeToScroll]);
+                ga('send', 'event', 'Reading', 'StartReading', '', timeToScroll); 
             } else {
                 alert('started reading ' + timeToScroll);
             }
@@ -59,7 +60,7 @@
             contentScrollEnd = currentTime.getTime();
             timeToContentEnd = Math.round((contentScrollEnd - scrollStart) / 1000);
             if (!debugMode) {
-                _gaq.push(['_trackEvent', 'Reading', 'ContentBottom', '', timeToContentEnd]);
+                ga('send', 'event', 'Reading', 'ContentBottom', '', timeToContentEnd); 
             } else {
                 alert('end content section '+timeToContentEnd);
             }
@@ -73,13 +74,13 @@
             totalTime = Math.round((end - scrollStart) / 1000);
             if (!debugMode) {
                 if (totalTime < 60) {
-                    _gaq.push(['_setCustomVar', 5, 'ReaderType', 'Scanner', 2]);
+                    //_gaq.push(['_setCustomVar', 5, 'ReaderType', 'Scanner', 2]);
                 } else {
-                    _gaq.push(['_setCustomVar', 5, 'ReaderType', 'Reader', 2]);
+                    //_gaq.push(['_setCustomVar', 5, 'ReaderType', 'Reader', 2]);
                 }
-                _gaq.push(['_trackEvent', 'Reading', 'PageBottom', pageTitle, totalTime]);
+                ga('send', 'event', 'Reading', 'PageBottom', pageTitle, totalTime); 
             } else {
-                alert('bottom of page '+totalTime);
+                alert('bottom of page '+totalTime + ":" + pageTitle);
             }
             didComplete = true;
         }
@@ -96,9 +97,7 @@
     });
 });
    
-   
-   
-   
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -106,7 +105,6 @@
 
   ga('create', 'UA-54734559-1', 'auto');
   ga('send', 'pageview');
-
 </script>
  </head>
  <body>
@@ -177,5 +175,6 @@ Vivamus ac magna magna. Vestibulum a ultrices lorem. Praesent porta augue ut arc
 Etiam at porttitor sem. Sed sollicitudin tincidunt purus sed vulputate. Quisque ut sapien elit. Integer lacus risus, viverra eu adipiscing ut, imperdiet vestibulum leo. Integer vel neque erat. Phasellus egestas nibh id sapien euismod rhoncus. Donec metus magna, feugiat ut tincidunt in, suscipit ac nisl. Nunc nec mauris dui, eget posuere nunc. Sed sed orci ut nisi aliquam suscipit a et diam. Nullam in mollis massa.
     
 </body>
+  
   
 </html>
